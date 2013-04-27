@@ -1,7 +1,7 @@
 
 # prefix
 
-  get dom prefixed properties
+  get style prefixed name
 
 ## Installation
 
@@ -9,7 +9,10 @@
 
 ## API
 
-   
+```js
+var prefix = require('prefix');
+prefix('transform'); // return prefixed style such as webkitTransform
+```
 
 ## License
 
