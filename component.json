@@ -1,9 +1,9 @@
 {
   "name": "prefix",
   "repo": "pgherveou/prefix",
-  "description": "get dom prefixed properties",
+  "description": "get prefixed styles properties",
   "version": "0.0.1",
-  "keywords": [],
+  "keywords": ["dom", "css", "prefix"],
   "dependencies": {},
   "development": {},
   "license": "MIT",
