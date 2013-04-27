@@ -1,13 +1,13 @@
 <html>
   <head>
-    <title>Event Test</title>
+    <title>Prefix Test</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" href="https://raw.github.com/visionmedia/mocha/master/mocha.css"/>
+    <link rel="stylesheet" href="mocha/mocha.css"/>
   </head>
   <body>
     <div id="mocha"></div>
     <script src="../build/build.js"></script>
-    <script src="http://raw.github.com/visionmedia/mocha/master/mocha.js"></script>
+    <script src="mocha/mocha.js"></script>
     <script>
       mocha.setup('bdd')
       var prefix = require('prefix');
@@ -17,13 +17,18 @@
       }
 
       describe('prefix', function() {
-        it ('should return a prefixed dom style', function() {
+        it ('should return the property for classic dom style like border', function() {
+          var ppty = prefix('border');
+          assert(ppty == 'border', 'expect "' + ppty + '" to be "Border"');
+        });
+        it ('may return a prefixed dom style for css3 style like transform', function() {
           var ppty = prefix('transform');
           assert(ppty.indexOf(ppty) !== -1);
+          assert(ppty.indexOf('ransform') !== -1, 'expect (t)"ransform" to be in "' + ppty + '"');
         });
-        it ('should return an empty string for fake dom style', function() {
+        it ('should return an empty string for fake style', function() {
           var ppty = prefix('foo');
-          assert(ppty == '');
+          assert(ppty == '', 'expect ' + ppty + ' to be empty');
         });
       });
 
