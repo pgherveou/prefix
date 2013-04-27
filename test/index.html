@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <title>Event Test</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://raw.github.com/visionmedia/mocha/master/mocha.css"/>
+  </head>
+  <body>
+    <div id="mocha"></div>
+    <script src="../build/build.js"></script>
+    <script src="http://raw.github.com/visionmedia/mocha/master/mocha.js"></script>
+    <script>
+      mocha.setup('bdd')
+      var prefix = require('prefix');
+
+      function assert(expr, msg) {
+        if (!expr) throw new Error(msg || 'failed');
+      }
+
+      describe('prefix', function() {
+        it ('should return a prefixed dom style', function() {
+          var ppty = prefix('transform');
+          assert(ppty.indexOf(ppty) !== -1);
+        });
+        it ('should return an empty string for fake dom style', function() {
+          var ppty = prefix('foo');
+          assert(ppty == '');
+        });
+      });
+
+      mocha.run();
+    </script>
+  </body>
+</html>
