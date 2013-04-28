@@ -26,6 +26,11 @@
           assert(ppty.indexOf(ppty) !== -1);
           assert(ppty.indexOf('ransform') !== -1, 'expect (t)"ransform" to be in "' + ppty + '"');
         });
+        it ('should return a dasherized prefixed dom style', function() {
+          var ppty = prefix('borderRadius', true);
+          assert(ppty.indexOf(ppty) !== -1);
+          assert(ppty.indexOf('border-radius') !== -1, 'expect "border-radius" to be in "' + ppty + '"');
+        });
         it ('should return an empty string for fake style', function() {
           var ppty = prefix('foo');
           assert(ppty == '', 'expect ' + ppty + ' to be empty');

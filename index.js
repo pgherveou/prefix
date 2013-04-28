@@ -1,39 +1,47 @@
 // module globals
 
-var cache = {}
-  , prefixes = ['webkit','Moz','ms','O']
+var prefixes = ['webkit','Moz','ms','O']
   , len = prefixes.length
-  , test = document.createElement('p');
+  , test = document.createElement('p')
+  , capitalize = function (str) {return str.charAt(0).toUpperCase() + str.slice(1);}
+  , dasherize = function(str) {
+      return str.replace(/([A-Z])/g, function(str,m1) {
+        return '-' + m1.toLowerCase();
+      });
+    };
 
 /**
  * get prefix for dom style
  *
- * @param  {String} ppty dom style
- * @return {String} prefixed ppty
+ * example
+ *   prefix('transform') // webkitTransform
+ *   prefix('transform', true) // -webkit-transform
+ *
+ * @param  {String}   ppty dom style
+ * @param  {Boolean}  dasherize
+ * @return {String}   prefixed ppty
  * @api public
  */
 
-module.exports = function(ppty) {
-  var Ppty, name;
-  if ((name = cache[ppty])) return name;
+module.exports = function(ppty, dasherized) {
+  var Ppty, name, Name;
 
   // test without prefix
   if (test.style[ppty] !== undefined) {
-    cache[ppty] = ppty;
-    return ppty;
+    if (!dasherized) return ppty;
+    else return dasherize(ppty);
   }
 
   // test with prefix
-  Ppty = ppty.charAt(0).toUpperCase() + ppty.slice(1);
+  Ppty = capitalize(ppty);
   for (i = 0; i < len; i++) {
     name = prefixes[i] + Ppty;
     if (test.style[name] !== undefined) {
-      cache[ppty] = name;
-      return name;
+      if (!dasherized) return name;
+      return dasherize('-' + prefixes[i].toLowerCase() + '-' + ppty);
     }
   }
 
   // not found return empty string
-  cache[ppty] = '';
   return '';
 };

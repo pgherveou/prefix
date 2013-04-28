@@ -11,7 +11,8 @@
 
 ```js
 var prefix = require('prefix');
-prefix('transform'); // return prefixed style such as webkitTransform
+prefix('transform'); // return prefixed style eg: webkitTransform
+prefix('transform', true); // return prefixed dasherized style eg -webkit-transform
 ```
 
 ## License
