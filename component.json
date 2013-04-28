@@ -2,7 +2,7 @@
   "name": "prefix",
   "repo": "pgherveou/prefix",
   "description": "get prefixed styles properties",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "keywords": ["dom", "css", "prefix"],
   "dependencies": {},
   "development": {},
