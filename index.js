@@ -38,7 +38,7 @@ module.exports = function(ppty, dasherized) {
     name = prefixes[i] + Ppty;
     if (test.style[name] !== undefined) {
       if (!dasherized) return name;
-      return dasherize('-' + prefixes[i].toLowerCase() + '-' + ppty);
+      return '-' + prefixes[i].toLowerCase() + '-' + dasherize(ppty);
     }
   }
 
