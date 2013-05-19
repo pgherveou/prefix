@@ -29,7 +29,7 @@ module.exports = function(ppty, dasherized) {
   // test without prefix
   if (test.style[ppty] !== undefined) {
     if (!dasherized) return ppty;
-    else return dasherize(ppty);
+    return dasherize(ppty);
   }
 
   // test with prefix
